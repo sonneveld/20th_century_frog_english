@@ -42,7 +42,7 @@ with open("english.csv", "r") as csvfile:
 
 os.makedirs("english", exist_ok=True)
 
-with open("english/FROGS.EXE", 'wb') as f:
+with open("english/FROG.EXE", 'wb') as f:
     f.write(data)
 
 files = [
