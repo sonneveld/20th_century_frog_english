@@ -1,0 +1,470 @@
+!  Besetzung in willkrlicher Reihenfolge:
+
+        1. Biene           Esther
+        2. Biene           Mabel
+        3. Biene           Maja
+        4. Biene           Melanie
+        5. Biene           Sabine
+        6. Biene           Theodora
+        7. Biene           Willi
+        8. Biene           Yvonne
+        1. Heupferd        Deister
+        2. Heupferd        Flicka
+        3. Heupferd        Fury
+        4. Heupferd        Green Beauty
+        5. Heupferd        Groucho
+        6. Heupferd        Jolly Jumper
+        7. Heupferd        Olympia
+        8. Heupferd        Rih
+        9. Heupferd        Rosinante
+       10. Heupferd        Walhalla
+       Fledermaus          Bat Man
+       1. Skorpion         Ares
+       2. Skorpion         Antares
+       Hecht               P. Heil
+       Libelle             M. v. R.
+       K„fer               Marie N.
+       Planet              Jupiter
+       Raumschiff          MBB Enterprise
+       Raupe               Mademoiselle B.
+       Schmetterling       Madame B.
+       Spinne              Thekla
+       Stiefel             Bw, einfach, Gr. 49
+       Storch              Meister Adebar
+       Vogel               Neunt”ter
+       Walze               Goodyear
+       Natter              Boatrice
+
+            und dreiáig Fliegen
+
+                  sowie
+
+!        Mrs Frog als Frau Frosch
+!        Mr Frog als Herr Frosch
+
+
+ Programmierung           Wayne Snyder III
+                          Vincent P. P. McLaglen
+                          Murgatroyd J. Grattini
+ Einrcken                Murgatroyd J. Grattini
+ Rechtschreibung          Vincent P. P. McLaglen
+ Dateiverwaltung          Dos Holliday
+ Probel„ufe               Manfred B.
+
+ Kamera                   Multi Display
+ Schnitt                  nochmals Manfred B.
+ Unterwasseraufnahmen     Jacques Cousteau
+ Beleuchtung              Turbo for O.
+ Stromversorgung          Stadtwerke Kaiserslautern
+ Stromtransport           Glark Cable
+ Requisite                Niklaus Abend
+ Technik                  Der nette Herr Waigell
+
+ Musik                    J. Strauá
+                          T. C. Fox
+                          Vincent P. P. McLaglen
+ Ton                      Phil & Sue Lout
+
+ Design                   Murgatroyd J. Grattini
+ Bauten                   F. Schenkel
+ Vernetzung               Toni Sailer
+ Bhnenbild               Iwan Borowitsch Markownikow
+ Background               Melanie Noir
+
+ Maske                    Red Skin
+                          Boris Karloff
+ Kostme                  Camouflage
+ Mr Frog's Garderobe      Karl Lagerfeld
+ Mrs Frog's Garderobe     Karla Lagerfeld
+
+ Besetzung                Vincent P. P. McLaglen
+ Wissenschaftl. Beratung  cand. phys. Isaac Newton
+ Statistik                Lieschen Neue-Noellmann
+ Tierdressur              C. Busch-Roland
+                          C. Krone
+                          C. Knie
+ Tierpflege               Prof. Dr. Dr. B. Grzimek
+
+ Choreographie            Rudi Nurejew
+ Stunts                   Colt S.
+ Brutalit„ten             Bruce Lee
+ Aerodynamik              Bruce Luv
+ Special Effects          Wayne Snyder III
+ Byrotechnik              Andr‚ Dunkler
+ Fehler                   N. N.
+ Trick                    Disney Studios Inc.
+ Graphik                  Gerhard Plot
+                          Ali McDraw
+ Titelbild                Wayne Snyder III
+ Reanimation              Bud Rose
+
+ Buch                     Wayne Snyder III
+                          Vincent P. P. McLaglen
+                          Murgatroyd J. Grattini
+
+        nach einer Idee von Maria G.
+
+ Demotivation             L. Ausklang
+ Ideen                    Wayne Snyder III
+                          Vincent P. P. McLaglen
+                          Murgatroyd J. Grattini
+                          E. A. Poe
+                          B. Dash
+                          J. S. Willy
+                          Montgomery Python
+                          Arnie Schwarzenegger
+                          Alec Ale
+
+ Redaktion                Alfred Ebenezer Neumann
+ Zensur                   Veer Botha
+ Koordination             Charles Haute
+ Scriptgirl               A. Hitchcock
+
+ Produktion               B. Elchinger
+
+ Sprche                  Heinz Erhardt
+                          Tomi Ungerer
+                          Douglas Adams
+                          Freddy Schiller
+                          Gerhard Seyfried
+                          Bibel
+                          Volksmund
+
+ Kaffee                   Ed Uscho
+ Abspann                  Murgatroyd J. Grattini
+                          Wayne Snyder III
+                          Vincent P. P. McLaglen
+                          F. Schenkel
+                          Horst S. Adler
+                          Rufus T. Firefly
+                          Friedrich D. Groá
+                          Prof. Franz Xaver Flatz
+                          Charles Augustus Walkinshaw
+
+ Farbe                    EgaColor
+ Kopien                   AquaColor
+
+ šbersetzung              Tom Peiler
+ Synchronisation          Willi Wichtig
+
+
+
+
+
+!    Jede hnlichkeit mit fliegenden oder
+!      toten Personen ist frei erfunden.
+!  Die Handlung des Spieles ist rein zuf„llig.
+!Diese Angaben erfolgen, wie immer, ohne Gewehr.
+
+
+
+!  Wir danken Cato dem lteren, Elvis Presley
+!   und Carl Zuckmayer fr ihre wesentlichen
+!       Beitr„ge zur westlichen Kultur.
+
+
+
+
+! Hergestellt an Originalschaupl„tzen und in den
+!          University Studios, K-Town
+
+
+Freigelassen von Twentieth Century Frog Infiltrated
+#001                         Einleitung
+
+Ein Frosch springt durch verschiedene Spielebenen und muá dabei
+vielerlei Insekten fressen, ohne selbst von einem seiner Feinde er-
+legt zu werden. Die Ebenen werden jeweils durch einen Sinnspruch
+eingeleitet, der die darauf folgende Spielsituation kurz charak-
+terisiert.
+
+
+
+
+#002                    Steuerung des Frosches
+
+Um den Frosch zu bewegen, werden beinahe s„mtliche Tasten der Tasta-
+tur ben”tigt.
+
+Fr Sprnge drckt man eine Taste der vier Haupttastenreihen (Buch-
+staben, Ziffern, Satzzeichen). Die oberste Reihe (Ziffern) bewirkt
+dabei die h”chsten Sprnge und die unterste Reihe (ber der Leer-
+taste) nur sehr niedrige. Durch die Leertaste kann man sich nicht
+fortbewegen. Je weiter links sich eine Taste auf der Tastatur be-
+findet, desto st„rker springt der Frosch nach links und fr rechts
+entsprechend. Jeder Sprung kostet Energie, und je h”her der Frosch
+springt, desto mehr Punkte werden abgezogen.
+Wenn man l„ngere Zeit keine Taste drckt, wird der Frosch unge-
+duldig, tappt ein paar mal mit einem Fuá und springt pl”tzlich von
+selbst weg. Dabei sind Sprungh”he und -weite zuf„llig. Falls der
+Frosch einmal l„nger sitzen bleiben soll, muá man ihn daher ab und
+zu durch Drcken der Leertaste beruhigen, was natrlich ein paar
+Punkte kostet (Fr jeden Tastendruck werden Punkte abgezogen.).
+Der aktuelle Punktestand kann rechts oben abgelesen werden.
+
+#003Zum Schwimmen werden die vier Cursortasten ben”tigt. Macht man sehr
+hektische Schwimmzge, kommt man allerdings nur schlecht vorw„rts.
+Im Wasser wird der Frosch nicht ungeduldig, dafr sinkt er mit der
+Zeit immer tiefer. Auáerdem kann er nicht unbegrenzt lange unter
+Wasser bleiben, nach einer gewissen Anzahl von Schwimmzgen muá er
+kurz einmal auftauchen, um zu atmen. Wann es dafr Zeit ist, er-
+kennt man daran, daá sich der Frosch rot verf„rbt. Dann bleiben nur
+noch wenige Schwimmzge brig, um an die Oberfl„che zu gelangen.
+
+Im Weltraum werden ebenfalls die Cursortasten zum Steuern benutzt.
+
+#030Zu Beginn eines Spieles kann der Schwierigkeitsgrad (Skill) ge-
+w„hlt werden. Je h”her der Skill, desto schwieriger ist es die
+Insekten zu fressen und gegen die Feinde des Frosches zu be-
+stehen, die Belohnung (Punktezahl) fr jede 'Mahlzeit' ist je-
+doch umso h”her. Der gr”áte Skill ist 'Gonzo der Groáe', der
+kleinste der 'blutige Anf„nger'.
+
+
+
+
+#004                         Die Nahrung
+
+In den Ebenen gibt es verschiedene Tiere, die der Frosch fressen
+kann. Um in die n„chste Ebene zu gelangen, mssen alle Fliegen,
+Bienen, Heuschrecken und Flederm„use der aktuellen Ebene gefangen
+werden.
+Wieviele dieser Tiere noch vorhanden sind, steht rechts oben. Der
+Frosch kann allerdings nur im Flug fressen. Er erkennt von selbst,
+wann ein Tier nahe genug ist, um es zu verzehren. Wenn der Frosch
+sitzt, kann man durch Drcken der Leertaste im geeigneten Moment
+eine Mahlzeit erreichen.
+#005W„hrend die Fliegen nicht weiter auf den Frosch achten, werden die
+Heuschrecken im Gras durch ihn aufgeschreckt.
+#014Der Frosch muá den Bienenkorb berhren, um die Bienen herauszu-
+locken. Dadurch werden die Bienen aber zornig und drohen mit ihrem
+Stachel. Dann k”nnen sie nicht gefressen werden, sondern stechen auf
+den Frosch ein. Um sie wieder zu beruhigen, muá der Frosch sich kurz
+im Wasser verstecken oder etwas warten. Die Wartezeit h„ngt von der
+Anzahl der Bienen ab.
+Die Fledermaus ist ein besonderes Tier: sie hat mehrere Leben und
+fr jedes Leben h„ngt eine neue K”rperhlle am oberen Rand. Es kann
+immer nur der Fledermausk”rper gefressen werden, der gerade durch
+den Raum fliegt.
+#007Ab und zu taucht rechts oder links oben eine Raupe auf (siehe
+unten: Vermehrung). Hat sie eine hellgrne Farbe wie der Frosch, so
+bringt sie Punkte ein, bei dunkelgrner Farbe kostet es dagegen
+Punkte, wenn sie gefressen wird.
+Das Gleiche gilt fr die Libellen, die manchmal erscheinen. Friát
+der Frosch eine gute Libelle, so kommt er sofort eine Ebene weiter,
+eine schlechte wirft ihn eine Ebene zurck.
+Als Nahrung dienen auch Marienk„fer, die in der oberen H„lfte das
+Spielfeld durchfliegen, Schmetterlinge und Spinnen, in deren Netz
+der Frosch allerdings h„ngen bleiben kann.
+
+
+
+
+#008                         Leben und Sterben
+
+Der Frosch kann auf verschiedene Arten w„hrend seines Laufs durch
+die Ebenen umkommen. Es gibt viele Feinde, die ihm hart zusetzen,
+und auch einige Gegenst„nde sind nicht gerade harmlos. Zudem ver-
+hungert der Frosch ab einem bestimmten negativen Punktestand. Kurz
+zuvor erscheint zur Warnung ein Schmetterling, den der Frosch
+schnellstens fangen sollte, um seinen Magen noch einmal zu fllen.
+Um einige Zeit spielen zu k”nnen, kann man im Spiel neue Leben hin-
+zugewinnen (Anzeige der Leben in der rechten oberen Ecke).
+Ist der Frosch gestorben, so muá man eine Taste drcken, damit das
+Spiel fortf„hrt. Hat man noch ausreichend Leben zur Verfgung, so
+erf„hrt man eine kleine Himmelfahrt und kann dann in der gleichen
+Ebene weiterspielen.
+Sind die Leben verbraucht, erscheint eine Liste der besten Spieler,
+in die man sich bei entsprechendem Punktestand eintragen kann.
+
+
+
+
+#009                        Die Vermehrung
+
+Um weitere Leben zu erhalten, muá man sich mit einem Frosch vom an-
+deren Geschlecht fortpflanzen. Um diesen Frosch anzulocken, muá man
+ihm seine Lebenstchtigkeit demonstrieren, indem man vier Raupen
+friát. Die letzte der Raupen muá unbedingt gut sein, ist sie es
+nicht, erscheint ein gleichgeschlechtlicher Partner. Die Vermehrung
+ist dann nur unter Verwendung eines Hormons zur Geschlechtsumwand-
+lung m”glich, andernfalls gehen die bisher gefressenen Raupen ver-
+loren, und die Wartezeit bis zur Vermehrung beginnt von neuem.
+Ist endlich der Partner da, so springt man auf ihn. Erst beim an-
+schlieáenden Herunterspringen hat man sich dann vermehrt. Wird man
+aber von der vollst„ndigen Fortpflanzung irgendwie abgehalten (durch
+Mord, Wechsel in eine andere Ebene etc.), war alles umsonst, und man
+muá mit dem Raupenfressen noch einmal beginnen.
+
+
+
+                           Landschaften
+
+#011Der Balken ist so massiv, daá sich der Frosch daran den Sch„del
+einschl„gt, wenn er von unten dagegen springt. Um den Balken nicht
+zu berhren, darf man nur Tasten der untersten Reihe drcken, wenn
+der Frosch unter dem Balken sitzt. Vorsicht ist geboten, wenn die
+Walze unter dem Balken rollt. Sie kann den Frosch gegen den Balken
+schleudern.
+#012Der Frosch kann im Spinnennetz h„ngen bleiben. Unter dem Netz
+sind nur Sprnge mit den untersten beiden Tastenreihen m”glich.
+#015In die Grube kann der Frosch hineinfallen. Daraus gibt es dann kein
+Entrinnen mehr.
+#006Als Vampir darf der Frosch sich nicht ins Licht setzen.
+Vorsicht: In dieser Ebene sind sowohl bei den Libellen als auch bei
+den Raupen die Farben vertauscht.
+#016Im Wasser kann der Frosch ertrinken, wenn er nicht mehr gengend
+Luft hat. Es gibt eine kleine Seerose, auf der der Frosch sich aus-
+ruhen kann.
+#017Die W„nde kommen in manchen Ebenen von rechts und links auf den
+Frosch zu und schieben ihn evtl. in die Grube.
+#018Im Weltraum befindet sich ein Planet, der den Frosch anzieht.
+
+
+
+
+
+#019                    Die Feinde des Frosches
+
+#010Die Walze rollt von einer Seite zur anderen und kann den Frosch
+berrollen. Kommt der Frosch von oben an die Walze, wird er mit-
+gerissen oder fortgeschleudert.
+#013Der Stiefel tritt gezielt auf den Frosch ein. Die Stiefelposi-
+tion wird dann auf die Froschposition gesetzt, wenn der Stiefel aus
+dem oberen Bildschirmrand verschwunden ist.
+#018Die Schlange hat groáen Appetit auf den Frosch. Sie versteckt sich
+geschickt im Gebsch oder Gras und schleicht sich listig an ihn
+heran.
+#020Der Vogel fliegt durch den Raum und f„ngt den springenden Frosch,
+wenn dieser nahe genug ist. Im Sitzen ist der Frosch sicher.
+#021Der Storch l„uft immer auf den Frosch zu und versucht, wenn der
+Frosch sitzt, ihn zu fangen. Direkt unter sich kann der Storch den
+Frosch nicht sehen.
+#022Die Skorpione stechen den Frosch, wenn er in ihrer N„he sitzt. Zwei
+Stiche kann er gerade aushalten.
+#023Das Raumschiff schieát mit seinem Laser auf den Frosch. Nach eini-
+gen Schssen ist das Schutzschild des Frosches zerst”rt.
+#024Der Hecht schnappt den Frosch im Wasser.
+
+
+
+
+
+#025                         Die Gimmicks
+
+Hat man es geschafft, einen Marienk„fer zu fressen, so erh„lt man
+ein Gimmick. Gimmicks k”nnen in bestimmten Situationen sehr ntz-
+liche Hilfen sein. Setzt man allerdings einen Gimmick in einer fal-
+schen Situation ein, so wird das mit Punktabzug bestraft. Eine Liste
+der erhaltenen Gimmicks erscheint mit Taste F3. Diese Liste kann
+nicht beliebig lang werden. Ist sie aufgefllt, so erscheint ein
+Marienk„fer erst dann wieder, wenn ein Gimmick verbraucht wurde.
+Die Wirkung der verwendeten Gimmicks h„lt nur fr die eine Ebene an,
+nach einer Himmelfahrt oder nach dem Ebenenwechsel ist dieses
+Gimmick vollst„ndig verschwunden.
+Die Gimmicks und ihre Wirkung sind:
+
+#026Schutz gegen feindliche Umwelt:
+Axt        zerst”rt den Balken. Der Frosch kann sich an ihm nicht
+           mehr den Kopf einrennen und nicht mehr auf ihm sitzen.
+Besen      fegt Spinnennetze weg.
+Nagel      sticht in die Walze, wenn sie darber rollt.
+Tarnkappe  macht unsichtbar fr Tiere (Storch, Vogel, Skorpion etc.)
+           aber nicht fr Dinge (Wand, Walze, Raumschiff etc.).
+           Storch und Vogel k”nnen nur noch ahnen, wo der Frosch
+           ist, ihn aber nicht fangen.
+Sonnenschirm beschtzt den Vampir-Frosch vor dem Licht.
+™l         Der Vogel kann den Frosch nicht im Schnabel festhalten,
+           wenn dieser mit ™l eingerieben ist.
+Vogelscheuche lehrt den Vogel das Frchten.
+Fuáschelle bindet dem Storch die Fáe. Er ist an seinen augenblick-
+           lichen Standort gefesselt, kann aber noch zupicken.
+Stahlhelm  verhindert ein Aufspieáen durch den Storch.
+Gegengift  macht gegen Skorpionstiche immun.
+Fl”te      lenkt die Schlange von der Froschverfolgung ab.
+Raumhelm   schtzt vor dem Laser des Raumschiffes.
+Schild     ist so stabil, daá der Stiefel dem Frosch nichts mehr
+           anhaben kann.
+Stahltr„ger verhindert, daá W„nde sich bewegen.
+Schutt     schttet die Grube zu.
+Imkerhut   l„át keine Bienenstiche durch.
+Sauerstoff erm”glicht es, beliebig lange unter Wasser zu bleiben.
+Angel      vertreibt den Hecht in etwas gr”áere Wassertiefen.
+
+Freáhilfen:
+Leiche     sammelt die Fliegen um sich.
+Fliegenf„nger lockt Fliegen an, die an ihm kleben bleiben. Diese
+           Fliegen mssen dann nicht mehr gefressen werden.
+Steppenbrand schreckt Heuschrecken auf, die dann leichter zu fangen
+           sind.
+Honigglas  lockt die Bienen an und beruhigt sie eher. Sie verfolgen,
+           wenn sie zornig sind, nicht mehr den Frosch und lassen
+           sich leichter fangen, wenn sie nicht zornig sind.
+
+Lockstoffe:
+Blume      lockt einen Schmetterling an.
+Raupe      ruft eine Raupe herbei.
+K„fer      ruft einen neuen Marienk„fer.
+Pheromon   ist ein Sexual-Lockstoff. Es erscheint ein Frosch vom
+           anderen Geschlecht.
+
+Gimmick-Verwaltung:
+Kanister   verl„ngert die Gimmick-Liste.
+Kopierer   verdoppelt ein Gimmick.
+Gimmickschieber wirft ein Gimmick weg und ersetzt es durch irgend
+           ein anderes.
+Mlleimer  Zum Wegwerfen von unntzen Gimmicks.
+Bndel     faát mehrere gleiche Gimmicks zusammen, so daá sie in der
+           Liste weniger Platz wegnehmen.
+Garantie   Ein garantiertes Gimmick bleibt in allen Ebenen erhalten.
+           Sobald ein Gimmick garantiert wird, ist es fr die aktu-
+           elle Ebene auch eingesetzt. Es muá aber in jeder weiteren
+           Ebene neu verwendet werden.
+
+Anderes:
+Hormon     Der Frosch wechselt sein Geschlecht.
+Apparat    bef”rdert in die vorherige Ebene zurck.
+Antigraviton kehrt die Schwerkraft des Planeten um.
+Zylinder   Wenn der Frosch auf der einen Seite rausspringt, kommt er
+           zur gegenberliegenden Seite wieder hinein. Mit einem
+           zweiten Zylinder kann dieser Effekt wieder ausgeschaltet
+           werden.
+Salto      l„át den Frosch springen.
+Heiligenschein dem Frosche zur Zierde, zur Abwehr von allem 'Gutem'.
+
+
+
+
+
+#027                         Sondertasten
+
+Einige Tasten sind mit wichtigen Sonderfunktionen belegt:
+
+- F1 gibt alle diese Informationen. Der Text l„át sich mit  und 
+  um eine Zeile verschieben, PgUp und PgDn bl„ttern um eine Seite
+  weiter und Home und End gehen zum Anfang bzw. zum Ende des Texts.
+  Die Information wird mit Esc oder F1 beendet.
+
+- F2 schaltet die Musik, wo vorhanden, an oder aus.
+
+- F3 zeigt die Liste der verfgbaren Gimmicks an. Am unteren Bild-
+  schirmrand erscheint eine kurze Information ber die Wirkung
+  eines Gimmicks. Um ein Gimmick einzusetzen, w„hlt man es mit den
+  Cursortasten  und  aus und drckt Enter. Soll kein Gimmick ver-
+  wendet werden, drckt man Esc oder nochmals F3.
+
+- F4 h„lt das Programm bis zum n„chsten Tastendruck an.
+
+- F5 ruft eine Statistik aller bisher erfolgten Todesf„lle ab. Das
+  Spiel geht nach beliebigem Tastendruck weiter.
+
+- F6 blendet die Liste der besten Spieler ein. Das Spiel geht nach
+  beliebigem Tastendruck weiter.
+
+- Esc kann beinahe in jeder Spielsituation zum Abbruch des Spiels
+  verwendet werden. Es erscheint eine entsprechende Abfrage, ob das
+  Spiel tats„chlich beendet werden soll. Wird mit Esc das Spiel
+  mitten in einer Ebene verlassen, so wird das in der Statistik
+  als Selbstmord registriert, und es erfolgt kein Eintrag in die
+  Bestenliste.
+
