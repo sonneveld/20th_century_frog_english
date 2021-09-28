@@ -40,7 +40,7 @@ with open("english.csv", "r") as csvfile:
         data[exe_addr+1:exe_addr+1+strlen] = strdata
 
 
-os.makedirs("english")
+os.makedirs("english", exist_ok=True)
 
 with open("english/FROGS.EXE", 'wb') as f:
     f.write(data)
@@ -48,7 +48,7 @@ with open("english/FROGS.EXE", 'wb') as f:
 files = [
     'deutsch/FROG.DRV',
     'ENGFROG.INF',
-    'file_id.diz',
+    'deutsch/file_id.diz',
 ]
 
 for fname in files:
