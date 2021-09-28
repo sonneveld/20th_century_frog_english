@@ -1,0 +1,450 @@
+!  Cast in an arbitrary order:
+
+        1. Bee             Esther
+        2. Bee             Mabel
+        3. Bee             Maja
+        4. Bee             Melanie
+        5. Bee             Sabine
+        6. Bee             Theodora
+        7. Bee             Willi
+        8. Bee             Yvonne
+        1. Hay Horse       Deister
+        2. Hay Horse       Flicka
+        3. Hay Horse       Fury
+        4. Hay Horse       Green Beauty
+        5. Hay Horse       Groucho
+        6. Hay Horse       Jolly Jumper
+        7. Hay Horse       Olympia
+        8. Hay Horse       Rih
+        9. Hay Horse       Rosinante
+       10. Hay Horse       Walhalla
+       Bat                 Bat Man
+       1. Scorpion         Ares
+       2. Scorpion         Antares
+       Pike                P. Heil
+       Dragon-fly          M. v. R.
+       Beetle              Marie N.
+       Planet              Jupiter
+       Spaceship           MBB Enterprise
+       Raupe               Mademoiselle B.
+       Caterpillar         Madame B.
+       Spinne              Thekla
+       Spider              Bw, einfach, Gr. 49
+       Stork               Meister Adebar
+       Bird                Neunt”ter
+       Roller              Goodyear
+       Snake               Boatrice
+
+            and thirty flies
+
+                  as
+
+!        Mrs. Frog as Mrs. Frog
+!        Mr Frog as Mr Frog
+
+
+ Programming              Wayne Snyder III
+                          Vincent P. P. McLaglen
+                          Murgatroyd J. Grattini
+ Indent                   Murgatroyd J. Grattini
+ Spelling, Orthography    Vincent P. P. McLaglen
+ File Management          Dos Holliday
+ Test Runs                Manfred B.
+
+ Camera                   Multi Display
+ Cut                      nochmals Manfred B.
+ Underwater Photography   Jacques Cousteau
+ Lighting                 Turbo for O.
+ Power Supply             Stadtwerke Kaiserslautern
+ Power Transmission       Glark Cable
+ Props                    Niklaus Abend
+ Technology               Der nette Herr Waigell
+
+ Music                    J. Strauá
+                          T. C. Fox
+                          Vincent P. P. McLaglen
+ Volume                   Phil & Sue Lout
+
+ Design                   Murgatroyd J. Grattini
+ Buildings                F. Schenkel
+ Networking               Toni Sailer
+ Stage Design             Iwan Borowitsch Markownikow
+ Background               Melanie Noir
+
+ Mask                     Red Skin
+                          Boris Karloff
+ Costumes                 Camouflage
+ Mr Frog's Wardrobe       Karl Lagerfeld
+ Mrs Frog's Wardrobe      Karla Lagerfeld
+
+ Cast                     Vincent P. P. McLaglen
+ Scientific Advisory      cand. phys. Isaac Newton
+ Statistics               Lieschen Neue-Noellmann
+ Animal Training          C. Busch-Roland
+                          C. Krone
+                          C. Knie
+ Animal Care              Prof. Dr. Dr. B. Grzimek
+
+ Choreography             Rudi Nurejew
+ Stunts                   Colt S.
+ Brutalities              Bruce Lee
+ Aerodynamics             Bruce Luv
+ Special Effects          Wayne Snyder III
+ Byrotechnics             Andr‚ Dunkler
+ Failure                  N. N.
+ Trick                    Disney Studios Inc.
+ Graphics                 Gerhard Plot
+                          Ali McDraw
+ Cover Photo              Wayne Snyder III
+ Resuscitation            Bud Rose
+
+ A Book                   Wayne Snyder III
+                          Vincent P. P. McLaglen
+                          Murgatroyd J. Grattini
+
+        based on an idea by Maria G.
+
+ Demotivation             L. Ausklang
+ Ideas                    Wayne Snyder III
+                          Vincent P. P. McLaglen
+                          Murgatroyd J. Grattini
+                          E. A. Poe
+                          B. Dash
+                          J. S. Willy
+                          Montgomery Python
+                          Arnie Schwarzenegger
+                          Alec Ale
+
+ Editorial Staff          Alfred Ebenezer Neumann
+ Censorship               Veer Botha
+ Coordination             Charles Haute
+ Script Girl              A. Hitchcock
+
+ Production               B. Elchinger
+
+ Sayings                  Heinz Erhardt
+                          Tomi Ungerer
+                          Douglas Adams
+                          Freddy Schiller
+                          Gerhard Seyfried
+                          Bibel
+                          Volksmund
+
+ Coffee                   Ed Uscho
+ Credits                  Murgatroyd J. Grattini
+                          Wayne Snyder III
+                          Vincent P. P. McLaglen
+                          F. Schenkel
+                          Horst S. Adler
+                          Rufus T. Firefly
+                          Friedrich D. Groá
+                          Prof. Franz Xaver Flatz
+                          Charles Augustus Walkinshaw
+
+ Colour                   EgaColor
+ Copies                   AquaColor
+
+ Translation              Tom Peiler
+ Synchronization          Willi Wichtig
+
+
+
+
+
+!    Any resemblance to flying or 
+!     dead people is fictitious.
+!  The plot of the game is purely random.
+!As always, this information is given without a rifle.
+
+
+
+!  We thank Cato the Elder, Elvis Presley, 
+!   and Carl Zuckmayer for their significant 
+!       contributions to Western culture.
+
+
+
+
+!      Made in location and at 
+!     University Studios, K-Town
+
+
+Released by Twentieth Century Frog Infiltrated
+#001                         Introduction
+
+A frog jumps through different levels of the game and has to eat all 
+kinds of insects without being killed by one of its enemies. The 
+levels are introduced by a motto that briefly characterizes the game
+situation that follows.
+
+
+
+
+#002                    Control of the Frog
+
+Almost all the keys on the keyboard are needed to move the frog.
+
+For jumps you press one of the four main rows of keys (letters, 
+numbers, punctuation marks). The top row (digits) causes the highest
+jumps and the bottom row (above the space bar) only very low ones. 
+You cannot move through the space bar. The further to the left a key 
+is on the keyboard, the stronger the frog jumps to the left and 
+correspondingly for the right. Every jump costs energy, and the 
+higher the frog jumps, the more points are deducted.
+If you don't press a key for a long time, the frog gets impatient, 
+taps one foot a few times and suddenly jumps away on its own. The 
+height and width of the jump are random. If you want the frog to sit 
+longer, you have to calm it down from time to time by pressing the 
+space bar, which of course costs a few points (points are deducted 
+for each key press.).
+The current score can be read at the top right.
+
+#003The four cursor keys are required for swimming. However, if you do
+very hectic swimming strokes, you will make poor progress.
+The frog does not get impatient in the water, but instead sinks 
+deeper and deeper over time. In addition, he cannot remain 
+underwater indefinitely, after a certain number of swimming strokes 
+he has to emerge briefly once in order to breathe. You can tell when 
+it's time for this to happen when the frog turns red. Then there are 
+only a few strokes left to get to the surface.
+
+The cursor keys are also used for steering in space.
+
+#030At the beginning of a game, the level of difficulty (skill) can be
+selected. The higher the skill, the more difficult it is to eat the
+insects and to survive against the frog's enemies, but the higher
+the reward (score) for each 'meal'. The greatest skill is 'Gonzo the
+Great', the smallest is the 'Bloody Beginner'.
+
+
+
+
+#004                         The Food
+
+There are different animals in the plains that the frog can eat. To 
+get to the next level you have to catch all the flies, bees, 
+grasshoppers and bats of the current level.
+How many of these animals are still there is shown in the top right. 
+However, the frog can only eat in flight. He knows by himself when 
+an animal is close enough to eat it. When the frog is sitting, you 
+can reach a meal at the appropriate moment by pressing the space 
+bar.
+#005While the flies do not pay any further attention to the frog, the
+grasshoppers in the grass are startled by it.
+#014The frog has to touch the beehive to lure the bees out. This makes
+the bees angry and threatens with their sting. Then they cannot be
+eaten, but stab the frog. To calm them down again, the frog has to
+hide in the water for a moment or wait a little. The waiting time
+depends on the number of bees.
+The bat is a special animal: it has several lives and for each life 
+a new body shell hangs on the upper edge. Only the bat body that is 
+currently flying through the room can be eaten.
+#007Every now and then a caterpillar appears on the top right or left
+(see below: Propagation). If it is light green like the frog, it is
+worth points; if it is dark green, it costs points if it is eaten.
+The same goes for the dragonflies that sometimes appear. If the frog 
+eats a good dragonfly, it immediately goes one level further, a bad 
+one throws it back one level.
+Ladybugs, which fly through the playing field in the upper half, 
+butterflies and spiders, in whose web the frog can get caught, also 
+serve as food.
+
+
+
+
+#008                         Live and die
+
+The frog can perish in several ways during its run through the
+plains. There are a lot of enemies who hit him hard, and some items
+aren't exactly harmless either. In addition, the frog starves to
+death from a certain negative score. Shortly before, a butterfly
+appears as a warning, which the frog should catch as soon as
+possible in order to refill its stomach.
+In order to be able to play for some time, you can gain new lives in 
+the game (the lives are displayed in the top right corner).
+When the frog dies, you have to press a key to continue the game. If
+you still have enough life available, you experience a little
+ascension and can then continue playing on the same level.
+If the lives are used up, a list of the best players appears, in 
+which you can enter yourself if you have the appropriate number of 
+points.
+
+
+
+
+#009                        The Increase
+
+To get more life, one must reproduce with a frog of the opposite
+sex. To attract this frog you have to demonstrate your ability to
+live by eating four caterpillars. The last of the caterpillars has
+to be good, if it isn't, a same-sex partner appears. Reproduction is
+then only possible with the use of a sex change hormone, otherwise
+the previously eaten caterpillars are lost and the waiting time
+until reproduction begins again.
+When the partner is finally there, you jump on him. Only when
+jumping down did you then multiply. But if one is somehow prevented
+from reproducing completely (by murder, changing to another level,
+etc.), everything was in vain and one has to start all over with the
+caterpillar-eating.
+
+
+
+                           Landscapes
+
+#011The beam is so massive that the frog will hit its skull on it if it
+jumps against it from below. In order not to touch the bar, you can
+only press buttons in the bottom row when the frog is sitting under
+the bar. Be careful when the roller rolls under the beam. She can
+throw the frog against the beam.
+#012The frog can get stuck in the spider web. Only the bottom two rows
+of buttons can be used to jump under the net.
+#015The frog can fall into the pit. There is then no more escape from
+this.
+#006As a vampire, the frog is not allowed to sit in the light.
+Caution: In this level, the colors of both the dragonflies and the
+caterpillars have been swapped.
+#016The frog can drown in water if it no longer has enough air. There is
+a small water lily on which the frog can rest.
+#017In some levels, the walls come towards the frog from the right and
+left and possibly push it into the pit.
+#018There is a planet in space that attracts the frog.
+
+
+
+
+
+#019                    The Enemies of the Frog
+
+#010The roller rolls from side to side and can roll over the frog. If
+the frog hits the roller from above, it will be carried away or
+thrown away.
+#013The boot kicks the frog deliberately. The boot position is then set
+to the frog position when the boot has disappeared from the top of
+the screen.
+#018The snake has a great appetite for the frog. She cleverly hides in
+the bushes or grass and sneaks cunningly up to him.
+#020The bird flies across the room and catches the jumping frog when it
+is close enough. The frog is safe sitting down.
+#021The stork always runs towards the frog and tries to catch it when
+the frog is sitting. The stork cannot see the frog directly below.
+#022The scorpions sting the frog when it sits near them. He can just
+take two stitches.
+#023The spaceship shoots the frog with its laser. After a few shots, the
+frog's protective shield is destroyed.
+#024The pike catches the frog in the water.
+
+
+
+
+
+#025                         The Gimmicks
+
+If you have managed to eat a ladybug, you get a gimmick. Gimmicks
+can be very useful in certain situations. However, if you use a
+gimmick in the wrong situation, you will be penalized with a point
+deduction. A list of the received gimmicks appears with the F3 key.
+This list cannot be infinitely long. If it is filled, a ladybug only
+appears again when a gimmick has been used up. The effect of the
+gimmicks used only lasts for one level; after an ascension or after
+changing levels, this gimmick has completely disappeared.
+The gimmicks and their effects are:
+
+#026Protection against hostile environment:
+Axe              destroys the beam. The frog can no longer run its
+                 head on it and can no longer sit on it.
+Broom            sweeps away cobwebs.
+Nail             stabs the roller when it rolls over it.
+Magic Hat        makes invisible for animals (stork, bird, scorpion
+                 etc.) but not for things (wall, roller, spaceship
+                 etc.). The stork and the bird can only guess where
+                 the frog is, but cannot catch it.
+Parasol          protect the vampire frog from the light.
+Oil              The bird cannot hold the frog in its beak if it is
+                 rubbed with oil.
+Scarecrow        teaches the bird to fear.
+Ankle cuff       binds the stork's feet. He is tied to his current
+                 location, but can still peck.
+Steel helmet     prevents impaling by the stork.
+Antidote         makes you immune to scorpion stings.
+Flute            distracts the snake from chasing frogs.
+Space helmet     protects against the laser of the spaceship.
+Sign             is so stable that the boot can no longer harm the
+                 frog.
+Steel beam       prevents walls from moving.
+Rubble           fill the pit.
+Beekeeper hat    does not let bee stings through.
+Oxygen           allows you to stay under water as long as you like.
+Fishing rod      drives the pike into somewhat greater water depths.
+
+Feeding Aids:
+Corpse         gathers the flies around.
+Flycatcher     attracts flies that stick to it. These flies then no
+               longer have to be eaten.
+Workgear       Frightens locusts, which are then easier to catch.
+Honey jar      attracts the bees and rather calms them down. They no
+               longer chase the frog when they are angry and are
+               easier to catch when they are not angry.
+
+Attractants:
+flower        attracts a butterfly.
+Caterpillar   calls a caterpillar.
+Beetle        calls a new ladybug.
+Pheromone     is a sex attractant. A frog of the opposite sex
+              appears.
+
+Gimmick Management:
+Canister       extends the gimmick list.
+Copier         doubled a gimmick.
+Gimmick Slider throws away a gimmick and replaces it with another.
+Garbage can    For throwing away useless gimmicks.
+Bundle         combines several of the same gimmicks so that they
+               take up less space in the list.
+Guarantee      A guaranteed gimmick is retained in all levels. Once
+               a gimmick is guaranteed, it is used for the current
+               level. However, it must be used anew in every further
+               level.
+
+Other:
+Hormone         The frog changes its sex.
+Apparatus       promoted back to the previous level.
+Antigraviton    reverses the planet's gravity.
+Cylinder        If the frog jumps out on one side, it will come back
+                in on the opposite side. This effect can be switched
+                off again with a second cylinder.
+Somersault      makes the frog jump.
+Halo            for the frog as an ornament, to ward off all 'good'.
+
+
+
+
+
+#027                         Special Keys
+
+Some keys are assigned important special functions:
+
+- F1 gives all of this information. The text can be shifted one line
+  with Up and Down, PgUp and PgDn scroll one page further, and Home
+  and End go to the beginning and end of the text, respectively. The
+  information is terminated with Esc or F1.
+
+- F2 switches the music on or off, where available.
+
+- F3 shows the list of available gimmicks. Brief information about
+  the effect of a gimmick appears at the bottom of the screen. To
+  use a gimmick, select it with the cursor keys and and press Enter.
+  If no gimmick is to be used, press Esc or F3 again.
+
+- F4 stops the program until the next key press.
+
+- F5 calls up statistics of all deaths that have occurred so far.
+  The game continues after pressing any key.
+
+- F6 displays the list of the best players. The game continues after
+  pressing any key.
+
+- Esc can be used to abort the game in almost any game situation. A
+  corresponding query appears as to whether the game should actually
+  be ended. If you press Esc to leave the game in the middle of a
+  level, it will be registered in the statistics as a suicide and
+  there will be no entry in the leaderboard.
+
