@@ -15,13 +15,15 @@ with open("deutsch/FROSCH.EXE", "rb") as f:
 data = bytearray(data)
 
 
+overflow = 0
+
 with open("english.csv", "r") as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
 
     for row in spamreader:
 
         addr = int(row[0])
-        strlen = int(row[1])
+        strlen = row[1]
         english = row[3]
 
         exe_addr = addr + 0xf70
@@ -29,16 +31,30 @@ with open("english.csv", "r") as csvfile:
         if english == "TODO":
             continue
     
-        # print (addr, strlen, english)
-        if len(english) > strlen:
-            print(f"str '{english}' is too long. Will only see '{english[:strlen]}'")
+        if strlen != 'X':
+            strlen = int(strlen)
+                
+            english = english.replace("{UP}", "\x18")
+            english = english.replace("{DOWN}", "\x19")
 
-        strdata = english.encode("cp437") + b" "*100
-        strdata = strdata[:strlen]
-        # print(repr(strdata))
+            if len(english) > strlen:
+                print(f"{exe_addr:05x}: str '{english}' is too long. Will only see '{english[:strlen]}'")
+                overflow += len(english) + 1
 
-        data[exe_addr+1:exe_addr+1+strlen] = strdata
+            # sometimes FROG assumes full string, so we always pad with spaces and not change length
+            strdata = english.encode("cp437") + b" "*100
+            strdata = strdata[:strlen]
 
+            data[exe_addr+1:exe_addr+1+strlen] = strdata
+        else:
+            strdata = english.encode("cp437")
+            strlen = len(strdata)
+            data[exe_addr] = strlen
+            data[exe_addr+1:exe_addr+1+strlen] = strdata
+
+
+
+print('overflow:', overflow)
 
 os.makedirs("english", exist_ok=True)
 
