@@ -6,6 +6,21 @@ A DOS game from 1988 where you control a frog. There is a unique control
 scheme that requires the use of every letter and number on the keyboard.
 
 
+## Running the Game
+
+You will need an older PC or DOSBox. The game has no speed limiter, so 
+you will have to set the cycles to be the equivalent of a 286 machine, 
+e.g. 2750 cycles.
+
+To run:
+
+    FROG.EXE
+
+To run trainer edition with 999 lives:
+
+    FROG999.EXE
+
+
 ## The Patch
 
 Open the .exe in ida pro, identify all strings, and save an .idc file.
