@@ -76,12 +76,20 @@ def produce_english_exe():
     offset = exe.modules[0].data.find(b"\x3c\x4a")
     assert offset != -1
     exe.modules[0].data[offset:offset+2] = b'\x3c\x59'
-    
+
     offset = exe.modules[1].data.find(b"\x3c\x4a")
     assert offset != -1
     exe.modules[1].data[offset:offset+2] = b'\x3c\x59'
 
     with open("english/FROG.EXE", 'wb') as f:
+        libexe.write_exe(f, exe)
+
+    # 999 lives edition
+    dataseg = exe.modules[8]
+    dataseg.data[0x1f26] = 0xe7
+    dataseg.data[0x1f27] = 0x03
+
+    with open("english/FROG999.EXE", 'wb') as f:
         libexe.write_exe(f, exe)
 
 
