@@ -72,6 +72,15 @@ def produce_english_exe():
             else:
                 replace_big_string(mod, mod_offset, strdata)
 
+    # replace cmp al,'J' with 'Y'
+    offset = exe.modules[0].data.find(b"\x3c\x4a")
+    assert offset != -1
+    exe.modules[0].data[offset:offset+2] = b'\x3c\x59'
+    
+    offset = exe.modules[1].data.find(b"\x3c\x4a")
+    assert offset != -1
+    exe.modules[1].data[offset:offset+2] = b'\x3c\x59'
+
     with open("english/FROG.EXE", 'wb') as f:
         libexe.write_exe(f, exe)
 
