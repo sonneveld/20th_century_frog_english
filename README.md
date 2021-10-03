@@ -11,6 +11,10 @@ scheme that requires the use of every letter and number on the keyboard.
 Open the .exe in ida pro, identify all strings, and save an .idc file.
 This will be used to extract offsets and create a .csv file.
 
+To create the csv file:
+
+    python3 read_strings.py
+
 Edit the .csv file, adding an extra column with English translations.
 Leave any you don't want to translate as "TODO" or remove the line
 
@@ -23,6 +27,13 @@ The new version of the patch essentially identifies and pulls apart the
 original segments, and adds the longer strings to the end, adjusting the
 code to refer to the new position. This seems to work correctly for the
 strings that were too long but might not work for all cases.
+
+To create a new release:
+
+    python3 create_english.py
+
+This will create a new directory called 'english' with an English 
+release of 20th Century Frog.
 
 
 ## Translating Tips
