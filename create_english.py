@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import re
 import csv
 import shutil
 import os
@@ -11,24 +10,42 @@ import libexe
 Take the translated text and produce an english release.
 '''
 
-def find_mod_for_addr(exe, addr):
-    for m in exe.modules:
-        start_addr = m.oldseg * 16
-        offset = addr - start_addr
-        if offset >= 0 and offset < m.datalen:
-            return offset, m
-    raise Exception("Could not find module for")
+def replace_big_string(mod, mod_offset, strdata):
+
+    print(f"Doing magic for str {repr(strdata)}")
+
+    pascal_str = bytearray()
+    pascal_str.append(len(strdata))
+    pascal_str.extend(strdata)
+
+    str_offset = mod.datalen
+
+    mod.data.extend(pascal_str)
+    mod.datalen += len(pascal_str)
+
+    # instructions for mov di, offset ; push cs ; push di
+    instr = bytes([0xBF, mod_offset&0xFF, (mod_offset>>8)&0xFF, 0x0E, 0x57])
+    new_instr = bytes([0xBF, str_offset&0xFF, (str_offset>>8)&0xFF, 0x0E, 0x57])
+
+    replace_count = 0
+    while True:
+        instr_offset = mod.data.find(instr)
+        if instr_offset < 0:
+            break
+        mod.data[instr_offset:instr_offset+len(new_instr)] = new_instr
+        replace_count += 1
+    assert replace_count > 0
+    
 
 def produce_english_exe():
 
     with open("deutsch/FROSCH.EXE", "rb") as f:
         exe = libexe.read_exe(f)
 
-
     with open("english.csv", "r") as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        csvreader = csv.reader(csvfile, delimiter=',', quotechar='"')
 
-        for row in spamreader:
+        for row in csvreader:
 
             addr = int(row[0])
             strlen = row[1]
@@ -38,32 +55,22 @@ def produce_english_exe():
             if english == "TODO":
                 continue
 
-            mod_offset, mod = find_mod_for_addr(exe, addr)
+            mod_offset, mod = exe.find_mod_for_addr(addr)
 
-                
-            if strlen != 'X':
+            english = english.replace("{UP}", "\x18")
+            english = english.replace("{DOWN}", "\x19")
 
-                if False:
-                    strlen = int(strlen)
-                        
-                    english = english.replace("{UP}", "\x18")
-                    english = english.replace("{DOWN}", "\x19")
+            strdata = english.encode("cp437")
 
-                    strdata = english.encode("cp437")
-
-                    if len(strdata) > strlen:
-                        print(f"{exe_addr:05x}: '{german}' : TOO LONG: '{strdata}' : Actual: '{strdata[:strlen]}'")
-                        strdata = strdata[:strlen]
-
-                    strlen = len(strdata)
-                    data[exe_addr] = strlen
-                    data[exe_addr+1:exe_addr+1+strlen] = strdata
+            # 'X' means we can use extra space
+            if strlen == 'X' or len(strdata) <= int(strlen):
+                if strlen != 'X':
+                    assert mod.data[mod_offset] == int(strlen)
+                newstrlen = len(strdata)
+                mod.data[mod_offset] = newstrlen
+                mod.data[mod_offset+1:mod_offset+1+newstrlen] = strdata
             else:
-                # 'X' means we can use extra space
-                strdata = english.encode("cp437")
-                strlen = len(strdata)
-                mod.data[mod_offset] = strlen
-                mod.data[mod_offset+1:mod_offset+1+strlen] = strdata
+                replace_big_string(mod, mod_offset, strdata)
 
     with open("english/FROG.EXE", 'wb') as f:
         libexe.write_exe(f, exe)

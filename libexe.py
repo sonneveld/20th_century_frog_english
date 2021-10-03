@@ -63,11 +63,20 @@ class Exe:
         self.post_data = post_data
         self.seg_addrs = seg_addrs
 
+    def find_mod_for_addr(self, addr):
+        for m in self.modules:
+            start_addr = m.oldseg * 16
+            offset = addr - start_addr
+            if offset >= 0 and offset < m.olddatalen:
+                return offset, m
+        raise Exception("Could not find module for")
+
 class Module:
 
     def __init__(self, data, datalen, relocations, oldseg):
         self.data = bytearray(data)
         self.datalen = datalen
+        self.olddatalen = datalen
         self.relocations = relocations
         self.oldseg = oldseg
 
