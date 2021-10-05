@@ -4,6 +4,7 @@ import csv
 import shutil
 import os
 import libexe
+import subprocess
 
 
 '''
@@ -36,11 +37,76 @@ def replace_big_string(mod, mod_offset, strdata):
         replace_count += 1
     assert replace_count > 0
     
+def hex_to_bytes(hexstr):
+    '''
+    Take a hex string like "0a 0b 0c 0d" and return a bytes obj
+    '''
+    tokens = hexstr.split()
+    hexbytes = bytes([int(x,16) for x in tokens])
+    return hexbytes
 
-def produce_english_exe():
+def nasm(asmfile):
+    basename, _ = os.path.splitext(asmfile)
+    binpath = basename + ".bin"
+    subprocess.run(['nasm', asmfile, '-o', binpath], check=True)
+    with open(binpath, 'rb') as f:
+        asmbin = f.read()
+    return asmbin
 
-    with open("deutsch/FROSCH.EXE", "rb") as f:
-        exe = libexe.read_exe(f)
+def fix_relocation(seg, offset, bin_length):
+    for i in range(bin_length-1):
+        if seg.data[offset+i] == 0xAD and seg.data[offset+i+1] == 0xDE:
+            seg.data[offset+i] = 8
+            seg.data[offset+i+1] = 0
+            seg.relocations.append(offset + i)
+            print(f"reloc: {offset + i:04x}")
+
+
+def add_timer_patch(exe):
+
+    timerpatch = nasm('timer.asm')
+
+    # Add timer
+    # 16BC:009A
+    overrideset_9a = timerpatch[0x9a:0x9a+8]
+    # 16BC:00f4
+    overriderestore_f4 = timerpatch[0xf4:0xf4+11]
+
+    seg7 = exe.modules[7]
+    seg7.data[0x9a:0x9a+8] = overrideset_9a
+    seg7.data[0xf4:0xf4+11] = overriderestore_f4
+
+
+    offset = len(seg7.data)
+    assert offset == 0x1da0
+    intcode = bytearray(timerpatch[offset:offset+0x100])
+    seg7.data.extend(intcode)
+    seg7.datalen += len(intcode)
+    fix_relocation(seg7, offset, len(intcode))
+
+
+    gamelooppatch = nasm('gameloop.asm')
+
+    seg0 = exe.modules[0]
+
+    for offset in [0x3c97, 0x3d44, 0x3d71]:
+        jmp_override = gamelooppatch[offset:offset+3]
+        seg0.data[offset:offset+3] = jmp_override
+
+    offset = len(seg0.data)
+    assert offset == 0x3e10
+    intcode = bytearray(gamelooppatch[offset:offset+0x100])
+    seg0.data.extend(intcode)
+    seg0.datalen += len(intcode)
+    fix_relocation(seg0, offset, len(intcode))
+
+
+    # exta room for our data
+    seg8 = exe.modules[8]
+    seg8.datalen += 16
+
+
+def add_english_patch(exe):
 
     with open("english.csv", "r") as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',', quotechar='"')
@@ -81,13 +147,26 @@ def produce_english_exe():
     assert offset != -1
     exe.modules[1].data[offset:offset+2] = b'\x3c\x59'
 
-    with open("english/FROG.EXE", 'wb') as f:
-        libexe.write_exe(f, exe)
-
+def add_999_lives_patch(exe):
     # 999 lives edition
     dataseg = exe.modules[8]
     dataseg.data[0x1f26] = 0xe7
     dataseg.data[0x1f27] = 0x03
+
+
+def produce_english_exe():
+
+    with open("deutsch/FROSCH.EXE", "rb") as f:
+        exe = libexe.read_exe(f)
+
+    add_timer_patch(exe)
+
+    add_english_patch(exe)
+
+    with open("english/FROG.EXE", 'wb') as f:
+        libexe.write_exe(f, exe)
+
+    add_999_lives_patch(exe)
 
     with open("english/FROG999.EXE", 'wb') as f:
         libexe.write_exe(f, exe)
