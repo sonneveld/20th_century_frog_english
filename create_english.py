@@ -106,11 +106,11 @@ def add_timer_patch(exe):
 
 
     # ADD VSYNC AND DELAY TO CREDITS
-    print("..credits")
+    print("..credits+intro")
     creditspatchbin = nasm('credits.asm')
     seg1 = exe.modules[1]
 
-    for offset, patchlen in [(0x3ecb,3), (0x3f71, 4)]:
+    for offset, patchlen in [(0x396a, 5), (0x396f,3), (0x399c,4), (0x3ecb,3), (0x3f71, 4)]:
         patchbin = creditspatchbin[offset:offset+patchlen]
         seg1.data[offset:offset+patchlen] = patchbin
 
