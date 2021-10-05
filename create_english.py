@@ -64,6 +64,8 @@ def fix_relocation(seg, offset, bin_length):
 
 def add_timer_patch(exe):
 
+    # CHAIN TIMER TO KEEP TRACK OF TIME
+    print("..timer")
     timerpatch = nasm('timer.asm')
 
     # Add timer
@@ -85,6 +87,8 @@ def add_timer_patch(exe):
     fix_relocation(seg7, offset, len(intcode))
 
 
+    # ADD VSYNC AND DELAY TO GAMELOOP
+    print("..gameloop")
     gamelooppatch = nasm('gameloop.asm')
 
     seg0 = exe.modules[0]
@@ -99,6 +103,23 @@ def add_timer_patch(exe):
     seg0.data.extend(intcode)
     seg0.datalen += len(intcode)
     fix_relocation(seg0, offset, len(intcode))
+
+
+    # ADD VSYNC AND DELAY TO CREDITS
+    print("..credits")
+    creditspatchbin = nasm('credits.asm')
+    seg1 = exe.modules[1]
+
+    for offset, patchlen in [(0x3ecb,3), (0x3f71, 4)]:
+        patchbin = creditspatchbin[offset:offset+patchlen]
+        seg1.data[offset:offset+patchlen] = patchbin
+
+    offset = len(seg1.data)
+    assert offset == 0x4210
+    intcode = bytearray(creditspatchbin[offset:offset+0x100])
+    seg1.data.extend(intcode)
+    seg1.datalen += len(intcode)
+    fix_relocation(seg1, offset, len(intcode))
 
 
     # exta room for our data
