@@ -87,15 +87,65 @@ def add_timer_patch(exe):
     fix_relocation(seg7, offset, len(intcode))
 
 
+    # MODIFY DELAY
+    '''
+    Using the new timer (added above), replace the cpu calibrated
+    delay function with one that waits for the number of ticks.
+    This fixes issues on fast cpus.
+    '''
+    print("..delay")
+    seg6 = exe.modules[6]
+    delaypatch = nasm('delay.asm')
+    for offset, patchlen in [(0x2e9, 0x10), ]:
+        patchbin = delaypatch[offset:offset+patchlen]
+        seg6.data[offset:offset+patchlen] = patchbin
+    
+    offset = len(seg6.data)
+    assert offset == 0x660
+    intcode = bytearray(delaypatch[offset:offset+0x100])
+    seg6.data.extend(intcode)
+    seg6.datalen += len(intcode)
+    fix_relocation(seg6, offset, len(intcode))
+
+
+
     # ADD VSYNC AND DELAY TO GAMELOOP
+    '''
+    The original gameloop had multiple delays, depending on how much
+    was rendered on the screen. Unloaded, the game loop waited about
+    21ms which is about 48Hz. If we take into account rendering, it
+    might have slowed down to about 35Hz, which is what we will 
+    replace the delay with.
+    '''
     print("..gameloop")
     gamelooppatch = nasm('gameloop.asm')
 
     seg0 = exe.modules[0]
 
-    for offset in [0x3c97, 0x3d44, 0x3d71]:
-        jmp_override = gamelooppatch[offset:offset+3]
-        seg0.data[offset:offset+3] = jmp_override
+    # disable original gameloop delays
+    jump_over_code = 0x239d
+    delays_to_skip = [ 
+        (0x3db, 0x3e4), 
+        (0x413, 0x41c),  
+        (0x1844, 0x184d),
+        (0x1902, 0x190b),
+        (0x1912, 0x191b),
+        (0x191b, 0x1924),
+        (0x196e, 0x1977),
+        (0x19e4, 0x19ed),
+        (0x1a4c, 0x1a55),
+        (0x1ab6, 0x1abf),
+        (0x1cf1, 0x1cfa),
+        (0x239d, 0x23a5),
+    ]
+    for offset_begin, offset_end in delays_to_skip:
+        jmp_rel = offset_end - offset_begin - 2
+        seg0.data[offset_begin] = 0xeb
+        seg0.data[offset_begin+1] = jmp_rel
+
+    for offset, patchlen in [(0x3c97,3), (0x3d44,3), (0x3d71,3)]:
+        patchbin = gamelooppatch[offset:offset+patchlen]
+        seg0.data[offset:offset+patchlen] = patchbin
 
     offset = len(seg0.data)
     assert offset == 0x3e10
@@ -106,11 +156,16 @@ def add_timer_patch(exe):
 
 
     # ADD VSYNC AND DELAY TO CREDITS
+    '''
+    The credits have no delay at all! It relies primarily on rendering
+    being slow enough for a reasonable scroll. This just adds a 35Hz
+    delay
+    '''
     print("..credits+intro")
     creditspatchbin = nasm('credits.asm')
     seg1 = exe.modules[1]
 
-    for offset, patchlen in [(0x396a, 5), (0x396f,3), (0x399c,4), (0x3ecb,3), (0x3f71, 4)]:
+    for offset, patchlen in [ (0x3ecb,3), (0x3f71, 4)]:
         patchbin = creditspatchbin[offset:offset+patchlen]
         seg1.data[offset:offset+patchlen] = patchbin
 

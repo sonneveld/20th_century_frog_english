@@ -28,50 +28,12 @@ section .call_wrapped_2 start=0x3d71
 section .new_game_update start=0x3e10
 
 wrapped_game_update:
-        call near vsync_wait
+        call near wait_for_vertical_retrace
         call near s_game_update_0_1D04
+        push bx
+        mov bx, 0Ah
         call near do_delay
+        pop bx
         retn
 
-vsync_wait:
-                cli
-                push dx
-                push ax
-
-                mov     dx, 3DAh        ; Video status bits:
-                                        ; 3: 1=vertical sync pulse is occurring.
-
-wait_until_no_vsync:                             
-                in      al, dx          
-                and     al, 8
-                jnz     wait_until_no_vsync
-
-
-wait_until_vsync:                               
-                in      al, dx         
-                and     al, 8
-                jz      wait_until_vsync
-
-                pop ax
-                pop dx
-                sti
-                retn
-
-do_delay:
-
-        push ds
-        push ax
-
-        mov ax, 0xDEAD ; dseg
-        mov ds, ax
-
-        delay_loop:
-        cmp word [ds:game_timer_counter], 9h
-        jb      delay_loop
-
-        mov  word [ds:game_timer_counter], 0
-
-        pop ax
-        pop ds
-
-        retn
+%include "common.asm"
