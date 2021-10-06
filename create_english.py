@@ -165,7 +165,7 @@ def add_timer_patch(exe):
     creditspatchbin = nasm('credits.asm')
     seg1 = exe.modules[1]
 
-    for offset, patchlen in [ (0x3ecb,3), (0x3f71, 4)]:
+    for offset, patchlen in [ (0x3eb7,3), (0x3ecb,3), (0x3f71, 4)]:
         patchbin = creditspatchbin[offset:offset+patchlen]
         seg1.data[offset:offset+patchlen] = patchbin
 

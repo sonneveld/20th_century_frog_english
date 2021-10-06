@@ -16,7 +16,12 @@ s_game_update_0_1D04: ;ret
 
 
 
-
+; 3 bytes
+section .call_credits_init start=0x3eb7
+    call credits_init
+    nop
+    nop
+    nop
 
 ; 3 bytes
 section .call_credits_start start=0x3ecb
@@ -38,7 +43,12 @@ section .call_credits_end start=0x3f71
 
 section .credits_timing start=0x4210
 
+credits_init:
+    mov  word [ds:game_timer_counter], 0
 
+    ;; original instr
+    mov     [bp-0Ah], ax
+    retn
 
 credits_start:
     call near wait_for_vertical_retrace

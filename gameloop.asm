@@ -28,6 +28,7 @@ section .call_wrapped_2 start=0x3d71
 section .new_game_update start=0x3e10
 
 wrapped_game_update:
+        mov  word [ds:game_timer_counter], 0
         call near wait_for_vertical_retrace
         call near s_game_update_0_1D04
         push bx
