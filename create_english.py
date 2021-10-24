@@ -8,6 +8,12 @@ import subprocess
 
 from endian import read_le_word, write_le_word
 
+OP_NOP = 0x90
+OP_JMP_REL16 = 0xeb
+OP_MOV_DI_IMM = 0xBF 
+OP_PUSH_CS = 0x0E
+OP_PUSH_DI = 0x57
+
 '''
 Take the translated text and produce an english release.
 '''
@@ -26,8 +32,8 @@ def replace_big_string(mod, mod_offset, strdata):
     mod.datalen += len(pascal_str)
 
     # instructions for mov di, offset ; push cs ; push di
-    instr = bytes([0xBF, mod_offset&0xFF, (mod_offset>>8)&0xFF, 0x0E, 0x57])
-    new_instr = bytes([0xBF, str_offset&0xFF, (str_offset>>8)&0xFF, 0x0E, 0x57])
+    instr = bytes([OP_MOV_DI_IMM, mod_offset&0xFF, (mod_offset>>8)&0xFF, OP_PUSH_CS, OP_PUSH_DI])
+    new_instr = bytes([OP_MOV_DI_IMM, str_offset&0xFF, (str_offset>>8)&0xFF, OP_PUSH_CS, OP_PUSH_DI])
 
     replace_count = 0
     while True:
@@ -70,15 +76,11 @@ def add_timer_patch(exe):
     timerpatch = nasm('timer.asm')
 
     # Add timer
-    # 16BC:009A
-    overrideset_9a = timerpatch[0x9a:0x9a+8]
-    # 16BC:00f4
-    overriderestore_f4 = timerpatch[0xf4:0xf4+11]
-
     seg7 = exe.modules[7]
-    seg7.data[0x9a:0x9a+8] = overrideset_9a
-    seg7.data[0xf4:0xf4+11] = overriderestore_f4
-
+    # set and restore timer int, replaces a debug int
+    for offset, patchlen in [(0x9a, 8), (0xf4, 11)]:
+        patchbin = timerpatch[offset:offset+patchlen]
+        seg7.data[offset:offset+patchlen] = patchbin
 
     offset = len(seg7.data)
     assert offset == 0x1da0
@@ -124,7 +126,6 @@ def add_timer_patch(exe):
     seg0 = exe.modules[0]
 
     # disable original gameloop delays
-    jump_over_code = 0x239d
     delays_to_skip = [ 
         (0x3db, 0x3e4), 
         (0x413, 0x41c),  
@@ -139,10 +140,19 @@ def add_timer_patch(exe):
         (0x1cf1, 0x1cfa),
         (0x239d, 0x23a5),
     ]
-    for offset_begin, offset_end in delays_to_skip:
-        jmp_rel = offset_end - offset_begin - 2
-        seg0.data[offset_begin] = 0xeb
-        seg0.data[offset_begin+1] = jmp_rel
+    if False:
+        # old method, skip over code with jump
+        for offset_begin, offset_end in delays_to_skip:
+            jmp_rel = offset_end - offset_begin - 2
+            seg0.data[offset_begin] = OP_JMP_REL16
+            seg0.data[offset_begin+1] = jmp_rel
+    else:
+        for offset_begin, offset_end in delays_to_skip:
+            for offset in range(offset_begin, offset_end):
+                seg0.data[offset] = OP_NOP
+                if offset in seg0.seg_index_for_offset:
+                    del seg0.seg_index_for_offset[offset]
+                    print(f"reloc del: 0000:0x{offset:04x}")
 
     for offset, patchlen in [(0x3c97,3), (0x3d44,3), (0x3d71,3)]:
         patchbin = gamelooppatch[offset:offset+patchlen]
