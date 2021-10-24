@@ -26,6 +26,7 @@ game_timer_counter: dw 0
 ; nah, just make sure it's AT LEAST.. so we need to round up
 
 ; important delays:
+; one thing to keep in mind, we might not be taking into account rendering time
 ; 0x258 / 600 ;; intro 1Hz
 ; 0x1c / 28 ;; going up 35hz
 ; 0x28 / 40 ;; going down 25hz

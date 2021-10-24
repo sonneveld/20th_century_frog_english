@@ -114,7 +114,7 @@ def add_timer_patch(exe):
     The original gameloop had multiple delays, depending on how much
     was rendered on the screen. Unloaded, the game loop waited about
     21ms which is about 48Hz. If we take into account rendering, it
-    might have slowed down to about 35Hz, which is what we will 
+    might have slowed down to about 30-35Hz, which is what we will 
     replace the delay with.
     '''
     print("..gameloop")

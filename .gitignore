@@ -3,4 +3,4 @@ english/
 *.SCO
 __pycache__
 a.out
-
+*.bin
