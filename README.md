@@ -8,9 +8,9 @@ scheme that requires the use of every letter and number on the keyboard.
 
 ## Running the Game
 
-You will need an older PC or DOSBox. The game has no speed limiter, so 
-you will have to set the cycles to be the equivalent of a 286 machine, 
-e.g. 2750 cycles.
+You will need an older PC or DOSBox. The original game's delay function
+wasn't reliable on faster machines but this has now been patched so it
+should run at a consistent speed on any machine.
 
 To run:
 
