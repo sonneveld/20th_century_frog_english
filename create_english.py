@@ -6,6 +6,7 @@ import os
 import libexe
 import subprocess
 
+from endian import read_le_word, write_le_word
 
 '''
 Take the translated text and produce an english release.
@@ -53,12 +54,12 @@ def nasm(asmfile):
         asmbin = f.read()
     return asmbin
 
-def fix_relocation(seg, offset, bin_length):
+def fix_relocation_to_dataseg(seg, offset, bin_length):
     for i in range(bin_length-1):
-        if seg.data[offset+i] == 0xAD and seg.data[offset+i+1] == 0xDE:
-            seg.data[offset+i] = 8
-            seg.data[offset+i+1] = 0
-            seg.relocations.append(offset + i)
+        if read_le_word(seg.data, offset+i) == 0xDEAD:
+            write_le_word(seg.data, offset+i, 0)
+            assert offset not in seg.seg_index_for_offset
+            seg.seg_index_for_offset[offset+i] = 8
             print(f"reloc: {offset + i:04x}")
 
 
@@ -84,7 +85,7 @@ def add_timer_patch(exe):
     intcode = bytearray(timerpatch[offset:offset+0x100])
     seg7.data.extend(intcode)
     seg7.datalen += len(intcode)
-    fix_relocation(seg7, offset, len(intcode))
+    fix_relocation_to_dataseg(seg7, offset, len(intcode))
 
 
     # MODIFY DELAY
@@ -105,7 +106,7 @@ def add_timer_patch(exe):
     intcode = bytearray(delaypatch[offset:offset+0x100])
     seg6.data.extend(intcode)
     seg6.datalen += len(intcode)
-    fix_relocation(seg6, offset, len(intcode))
+    fix_relocation_to_dataseg(seg6, offset, len(intcode))
 
 
 
@@ -152,7 +153,7 @@ def add_timer_patch(exe):
     intcode = bytearray(gamelooppatch[offset:offset+0x100])
     seg0.data.extend(intcode)
     seg0.datalen += len(intcode)
-    fix_relocation(seg0, offset, len(intcode))
+    fix_relocation_to_dataseg(seg0, offset, len(intcode))
 
 
     # ADD VSYNC AND DELAY TO CREDITS
@@ -174,7 +175,7 @@ def add_timer_patch(exe):
     intcode = bytearray(creditspatchbin[offset:offset+0x100])
     seg1.data.extend(intcode)
     seg1.datalen += len(intcode)
-    fix_relocation(seg1, offset, len(intcode))
+    fix_relocation_to_dataseg(seg1, offset, len(intcode))
 
 
     # exta room for our data

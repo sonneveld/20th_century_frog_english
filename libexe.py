@@ -4,6 +4,7 @@ import os
 import os.path
 import struct
 
+from endian import read_le_word, write_le_word
 
 '''
 References:
@@ -43,15 +44,6 @@ def chunks(lst, n):
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
 
-def read_word(data, offset):
-    return data[offset] | (data[offset+1]<<8)
-
-def write_word(data, offset, value):
-    data[offset] = value & 0xff
-    data[offset+1] = (value >> 8) & 0xff
-
-
-
 class Exe:
 
     def __init__(self, ss, sp, ip, cs, modules, post_data, seg_addrs):
@@ -64,23 +56,28 @@ class Exe:
         self.seg_addrs = seg_addrs
 
     def find_mod_for_addr(self, addr):
+        '''
+        Given a full address from the original exe, return an offset and module it came from.
+        Useful for pregenerated lists of patch offsets.
+        '''
         for m in self.modules:
             start_addr = m.oldseg * 16
             offset = addr - start_addr
             if offset >= 0 and offset < m.olddatalen:
                 return offset, m
-        raise Exception("Could not find module for")
+        raise Exception(f"Could not find offset/module for addr 0x{addr:04x}")
 
 class Module:
 
-    def __init__(self, data, datalen, relocations, oldseg):
+    def __init__(self, data, datalen, seg_index_for_offset, oldseg):
         self.data = bytearray(data)
         self.datalen = datalen
         self.olddatalen = datalen
-        self.relocations = relocations
+        self.seg_index_for_offset = seg_index_for_offset
         self.oldseg = oldseg
 
     def get_size_paragraphs(self):
+        ''' size of module in paragraphs, rounded up '''
         result, remainder = divmod(self.datalen, PARAGRAPH)
         if remainder > 0:
             result += 1
@@ -145,7 +142,7 @@ def read_exe(f):
 
     # collect non-adjusted segments
     for addr in relocations_addrs:
-        v = data[addr] | (data[addr+1]<<8)
+        v = read_le_word(data, addr)
         found_segs.add(v)
 
     found_segs = list(sorted(found_segs))
@@ -168,16 +165,21 @@ def read_exe(f):
 
         segdata = bytearray(data[start_addr:end_addr])
         segment_relocations = [offset for offset,segment in relocations if segment == seg_start]
-        modules.append(Module(segdata, datalen, segment_relocations, seg_start))
 
+        # normalise segment offsets by converting to index
+        # store 0 in module
+        seg_index_for_offset = {}
+        for reloc_addr in segment_relocations:
+            abs_seg_addr = read_le_word(segdata, reloc_addr)
+            seg_index = found_segs.index(abs_seg_addr)
+            assert seg_index >= 0
+            assert reloc_addr not in seg_index_for_offset
+            seg_index_for_offset[reloc_addr] = seg_index
+            write_le_word(segdata, reloc_addr, 0)
 
-    # normalise segment offsets by converting to index
-    
-    for m in modules:
-        for reloc_addr in m.relocations:
-            old_v = read_word(m.data, reloc_addr)
-            new_v = found_segs.index(old_v)
-            write_word(m.data, reloc_addr, new_v)
+        m = Module(segdata, datalen, seg_index_for_offset, seg_start)
+
+        modules.append(m)
 
     ss = found_segs.index(ss)
     cs = found_segs.index(cs)
@@ -215,16 +217,15 @@ def write_exe(f, exe):
 
     # patch program data
     for seg, m in zip(module_segments, exe.modules):
-        for r in m.relocations:
-            old_v = read_word(program_data, seg*16+r)
-            new_v = module_segments[old_v]
-            write_word(program_data, seg*16+r, new_v)
+        for moff, si in m.seg_index_for_offset.items():
+            seg_abs_addr = module_segments[si]
+            write_le_word(program_data, seg*16+moff, seg_abs_addr)
 
     # prepare header
 
     num_relocations = 0
     for m in exe.modules:
-        num_relocations += len(m.relocations)
+        num_relocations += len(m.seg_index_for_offset)
 
     header_size = 14*2 + num_relocations*4
     while header_size % 16 != 0:
@@ -240,28 +241,28 @@ def write_exe(f, exe):
     # bit of a fudge but seems to match
     alloc_size = (program_data_len * 2 + 4096) // 16
 
-    write_word(header_data, 0, 0x5a4d) # MZ
-    write_word(header_data, 2, remaining) # last page size
-    write_word(header_data, 4, exe_size_pages) # num pages
-    write_word(header_data, 6, num_relocations) # num relocations
-    write_word(header_data, 8, header_size // 16) # header size
-    write_word(header_data, 0xa, alloc_size) #  mem alloc min
-    write_word(header_data, 0xc, alloc_size) #  mem alloc max
-    write_word(header_data, 0xe, module_segments[exe.ss]) # adjusted ss
-    write_word(header_data, 0x10, exe.sp) # sp
-    write_word(header_data, 0x12, 0) # ignored checksum
-    write_word(header_data, 0x14, exe.ip) # ip
-    write_word(header_data, 0x16, module_segments[exe.cs]) # adjusted cs
-    write_word(header_data, 0x18, 0x1c) # relocation offset
-    write_word(header_data, 0x1A, 0) # overlay num
+    write_le_word(header_data, 0, 0x5a4d) # MZ
+    write_le_word(header_data, 2, remaining) # last page size
+    write_le_word(header_data, 4, exe_size_pages) # num pages
+    write_le_word(header_data, 6, num_relocations) # num relocations
+    write_le_word(header_data, 8, header_size // 16) # header size
+    write_le_word(header_data, 0xa, alloc_size) #  mem alloc min
+    write_le_word(header_data, 0xc, alloc_size) #  mem alloc max
+    write_le_word(header_data, 0xe, module_segments[exe.ss]) # adjusted ss
+    write_le_word(header_data, 0x10, exe.sp) # sp
+    write_le_word(header_data, 0x12, 0) # ignored checksum
+    write_le_word(header_data, 0x14, exe.ip) # ip
+    write_le_word(header_data, 0x16, module_segments[exe.cs]) # adjusted cs
+    write_le_word(header_data, 0x18, 0x1c) # relocation offset
+    write_le_word(header_data, 0x1A, 0) # overlay num
 
     # prepare relocation table
     offset = 0x1c
     for seg, m in zip(module_segments, exe.modules):
-        for r in m.relocations:
-            write_word(header_data, offset, r)
+        for moff, seg_index in m.seg_index_for_offset.items():
+            write_le_word(header_data, offset, moff)
             offset += 2
-            write_word(header_data, offset, seg)
+            write_le_word(header_data, offset, seg)
             offset += 2
 
     # write it!!
