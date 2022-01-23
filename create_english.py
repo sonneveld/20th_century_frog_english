@@ -240,6 +240,18 @@ def add_999_lives_patch(exe):
     dataseg.data[0x1f26] = 0xe7
     dataseg.data[0x1f27] = 0x03
 
+def enable_debug_keys(exe):
+    '''
+    The code for the debug keys is already in the binary, but there's
+    a block of code that explicitly disables it. All this does is 
+    replace that with nops.
+    '''
+    seg0 = exe.modules[0]
+    for offset in range(0x24da, 0x24e9):
+        seg0.data[offset] = OP_NOP
+        if offset in seg0.seg_index_for_offset:
+            del seg0.seg_index_for_offset[offset]
+            print(f"reloc del: 0000:0x{offset:04x}")
 
 def produce_english_exe():
 
@@ -249,6 +261,8 @@ def produce_english_exe():
     add_timer_patch(exe)
 
     add_english_patch(exe)
+
+    enable_debug_keys(exe)
 
     with open("english/FROG.EXE", 'wb') as f:
         libexe.write_exe(f, exe)
