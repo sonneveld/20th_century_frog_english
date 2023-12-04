@@ -262,7 +262,7 @@ def produce_english_exe():
 
     add_english_patch(exe)
 
-    enable_debug_keys(exe)
+    # enable_debug_keys(exe)
 
     with open("english/FROG.EXE", 'wb') as f:
         libexe.write_exe(f, exe)
