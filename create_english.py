@@ -262,15 +262,15 @@ def produce_english_exe():
 
     add_english_patch(exe)
 
-    # enable_debug_keys(exe)
+    #enable_debug_keys(exe)
 
     with open("english/FROG.EXE", 'wb') as f:
         libexe.write_exe(f, exe)
 
-    add_999_lives_patch(exe)
+    #add_999_lives_patch(exe)
 
-    with open("english/FROG999.EXE", 'wb') as f:
-        libexe.write_exe(f, exe)
+    #with open("english/FROG999.EXE", 'wb') as f:
+    #    libexe.write_exe(f, exe)
 
 
 def create_english_release():
@@ -283,6 +283,8 @@ def create_english_release():
         'deutsch/FROG.DRV',
         'ENGFROG.INF',
         'deutsch/file_id.diz',
+        'support/MODE.COM',
+        'support/RUN.BAT',
     ]
 
     for fname in files:
